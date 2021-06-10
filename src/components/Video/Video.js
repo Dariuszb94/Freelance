@@ -8,7 +8,7 @@ export const Video = () => {
   return (
     <React.Fragment>
       <VideoScroll
-        playbackRate={254}
+        playbackRate={1054}
         style={{ position: "fixed" }}
         onScroll={onScroll}
       >
