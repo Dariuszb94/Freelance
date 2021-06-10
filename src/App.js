@@ -1,10 +1,10 @@
 import "./App.css";
-import Video from "./components/Video/Video";
+import Tunnel from "./components/Tunnel/Tunnel";
 function App() {
   return (
     <div className="App">
       <div>
-        <Video />
+        <Tunnel />
       </div>
     </div>
   );
