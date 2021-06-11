@@ -1,13 +1,26 @@
 .tunnel {
   width: 100%;
-  height: 500px;
+  height: 1500px;
   background-color: black;
 }
 .tunnel__text {
   color: white;
 }
+.tunnel__sticky {
+  background-color: red;
+  height: 100vh;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
 .red {
   background-color: red;
   height: 20px;
   width: 100%;
+}
+.boxes {
+  width: 100%;
+  height: 40px;
+  background-color: red;
+  margin-bottom: 8px;
 }
