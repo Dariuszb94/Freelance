@@ -8,33 +8,31 @@ const Tunnel = () => {
   const tunnel__inner = useRef(null);
   const tunnel__outer = useRef(null);
 
-  const [jump, jumpSet] = useState(0);
   const [offset, offsetSet] = useState(0);
+
   const { ref, inView, entry } = useInView({
-    /* Optional options */
     threshold: 0,
   });
 
   useEffect(() => {
-    console.log(offset);
-    let calcOffset =
-      (tunnel__inner.current.offsetTop - tunnel__outer.current.offsetTop) /
-      jump;
     const onScroll = (e) => {
-      offsetSet(calcOffset);
+      const offsetRaw =
+        (e.target.documentElement.scrollTop -
+          tunnel__outer.current.offsetTop +
+          window.innerHeight) /
+        (tunnel__outer.current.clientHeight + window.innerHeight);
+      offsetRaw > 0 && offsetRaw < 1 ? offsetSet(offsetRaw) : offsetSet(0);
     };
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
   }, [offset]);
-  useEffect(() => {
-    jumpSet(
-      tunnel__outer.current.clientHeight - tunnel__inner.current.clientHeight
-    );
-  }, []);
+
   return (
-    <animated.section className="tunnel" ref={ref} ref={tunnel__outer}>
-      <div ref={tunnel__inner} className="tunnel__sticky"></div>
+    <animated.section className="tunnel" ref={tunnel__outer}>
+      <div ref={tunnel__inner} className="tunnel__sticky">
+        <div ref={ref}>aa</div>
+      </div>
     </animated.section>
   );
 };
