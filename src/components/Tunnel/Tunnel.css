@@ -13,6 +13,18 @@
   position: sticky;
   top: 0;
 }
+.tunnel__box__lt {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  position: absolute;
+}
+.tunnel__box__rt {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  position: absolute;
+}
 .red {
   background-color: red;
   height: 20px;
