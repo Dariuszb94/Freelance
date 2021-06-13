@@ -6,6 +6,7 @@ import Spotlight from "./TunnelComponents/Spotlight";
 import "aos/dist/aos.css";
 const Tunnel = () => {
   const tunnel__outer = useRef(null);
+  const tunnel__inner = useRef(null);
 
   const [offset, offsetSet] = useState(0);
   const contentPropsLT = useSpring({
@@ -26,11 +27,16 @@ const Tunnel = () => {
   });
   useEffect(() => {
     const onScroll = (e) => {
+      console.log(e.target.documentElement.scrollTop);
+      console.log(tunnel__outer.current.offsetTop);
+      console.log(window.innerHeight);
+      console.log(offset);
+
       const offsetRaw =
         (e.target.documentElement.scrollTop -
           tunnel__outer.current.offsetTop +
           window.innerHeight) /
-        (tunnel__outer.current.clientHeight - 100);
+        tunnel__inner.current.clientHeight;
       if (offsetRaw < 0) offsetSet(0);
 
       if (offsetRaw > 0 && offsetRaw <= 1) offsetSet(offsetRaw);
@@ -45,17 +51,21 @@ const Tunnel = () => {
   return (
     <a.section className="tunnel" ref={tunnel__outer}>
       <div className="tunnel__sticky">
-        <div className="tunnel__sticky-inner">
+        <div className="tunnel__sticky-inner" ref={tunnel__inner}>
           <a.div style={contentPropsLT} className="tunnel__box__lt">
             <div className="spotlight__inner">
               <Spotlight />
-              <div className="spotlight__inner__light"></div>
+              <div className="spotlight__inner__light">
+                <div className="spotlight__inner__light__bg"></div>
+              </div>
             </div>
           </a.div>
           <a.div style={contentPropsRT} className="tunnel__box__rt">
             <div className="spotlight__inner">
               <Spotlight />
-              <div className="spotlight__inner__light"></div>
+              <div className="spotlight__inner__light">
+                <div className="spotlight__inner__light__bg"></div>
+              </div>
             </div>
           </a.div>
         </div>
