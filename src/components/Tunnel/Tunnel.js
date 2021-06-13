@@ -45,12 +45,20 @@ const Tunnel = () => {
   return (
     <a.section className="tunnel" ref={tunnel__outer}>
       <div className="tunnel__sticky">
-        <a.div style={contentPropsLT} className="tunnel__box__lt">
-          <Spotlight />
-        </a.div>
-        <a.div style={contentPropsRT} className="tunnel__box__rt">
-          <Spotlight />
-        </a.div>
+        <div className="tunnel__sticky-inner">
+          <a.div style={contentPropsLT} className="tunnel__box__lt">
+            <div className="spotlight__inner">
+              <Spotlight />
+              <div className="spotlight__inner__light"></div>
+            </div>
+          </a.div>
+          <a.div style={contentPropsRT} className="tunnel__box__rt">
+            <div className="spotlight__inner">
+              <Spotlight />
+              <div className="spotlight__inner__light"></div>
+            </div>
+          </a.div>
+        </div>
         {/* <a.div style={contentPropsLB} className="tunnel__box__lb"></a.div>
         <a.div style={contentPropsRB} className="tunnel__box__rb"></a.div> */}
       </div>
