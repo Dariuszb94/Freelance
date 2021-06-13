@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
-import "./Tunnel.css";
+import "./Tunnel.scss";
 import { useSpring, animated as a, interpolate } from "react-spring";
+import Lamp from "../../assets/spotlight.svg";
+import Spotlight from "./TunnelComponents/Spotlight";
 import "aos/dist/aos.css";
 const Tunnel = () => {
   const tunnel__outer = useRef(null);
@@ -12,14 +14,14 @@ const Tunnel = () => {
     top: `${50 - 50 * offset}%`,
     transform: `translate(${-50 + 50 * offset}%, ${
       -50 + 50 * offset
-    }%) rotate(${offset * 90}deg)`,
+    }%) rotate(${offset * 45}deg)`,
   });
   const contentPropsRT = useSpring({
     opacity: offset,
     left: `${50 + 50 * offset}%`,
     top: `${50 - 50 * offset}%`,
     transform: `translate(${-100 * offset}%, ${-50 + 50 * offset}%) rotate(${
-      offset * -90
+      offset * -45
     }deg)`,
   });
   useEffect(() => {
@@ -43,8 +45,12 @@ const Tunnel = () => {
   return (
     <a.section className="tunnel" ref={tunnel__outer}>
       <div className="tunnel__sticky">
-        <a.div style={contentPropsLT} className="tunnel__box__lt"></a.div>
-        <a.div style={contentPropsRT} className="tunnel__box__rt"></a.div>
+        <a.div style={contentPropsLT} className="tunnel__box__lt">
+          <Spotlight />
+        </a.div>
+        <a.div style={contentPropsRT} className="tunnel__box__rt">
+          <Spotlight />
+        </a.div>
         {/* <a.div style={contentPropsLB} className="tunnel__box__lb"></a.div>
         <a.div style={contentPropsRB} className="tunnel__box__rb"></a.div> */}
       </div>

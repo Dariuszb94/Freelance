@@ -1,0 +1,52 @@
+@mixin tunnel__box {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  svg * {
+    fill: #8306b1;
+  }
+  svg {
+    filter: drop-shadow(1px 0px 6px #8306b1);
+    -webkit-filter: drop-shadow(1px 0px 6px #8306b1);
+    -moz-filter: drop-shadow(1px 0px 6px #8306b1);
+  }
+}
+
+.tunnel {
+  width: 100%;
+  height: 1500px;
+  background-color: black;
+}
+.tunnel__text {
+  color: white;
+}
+.tunnel__sticky {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+.tunnel__box__lt {
+  @include tunnel__box;
+}
+.tunnel__box__rt {
+  @include tunnel__box;
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
+.red {
+  background-color: red;
+  height: 20px;
+  width: 100%;
+}
+.boxes {
+  width: 100%;
+  height: 40px;
+  background-color: red;
+  margin-bottom: 8px;
+}
