@@ -8,6 +8,7 @@ function App() {
       <Component />
 
       <Tunnel />
+      <Component />
     </div>
   );
 }

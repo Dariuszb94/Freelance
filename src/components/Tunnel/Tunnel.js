@@ -4,11 +4,15 @@ import { useSpring, animated as a, interpolate } from "react-spring";
 import Lamp from "../../assets/spotlight.svg";
 import Spotlight from "./TunnelComponents/Spotlight";
 import "aos/dist/aos.css";
+import Typewriter from "typewriter-effect";
+import Underline from "./TunnelComponents/Underline";
 const Tunnel = () => {
   const tunnel__outer = useRef(null);
   const tunnel__inner = useRef(null);
 
   const [offset, offsetSet] = useState(0);
+  const [textFinished, textFinishedSet] = useState(false);
+  const [scrollOnScene, scrollOnSceneSet] = useState(0);
   const contentPropsLT = useSpring({
     opacity: offset,
     left: `${50 - 50 * offset}%`,
@@ -16,6 +20,11 @@ const Tunnel = () => {
     transform: `translate(${-50 + 50 * offset}%, ${
       -50 + 50 * offset
     }%) rotate(${offset * 45}deg)`,
+  });
+
+  const scrollWidth = useSpring({
+    width: `${scrollOnScene > 0 ? scrollOnScene * 100 : 0}%`,
+    opacity: `${scrollOnScene <= 0 ? 0 : 1}`,
   });
   const contentPropsRT = useSpring({
     opacity: offset,
@@ -27,19 +36,38 @@ const Tunnel = () => {
   });
   useEffect(() => {
     const onScroll = (e) => {
-      console.log(e.target.documentElement.scrollTop);
-      console.log(tunnel__outer.current.offsetTop);
-      console.log(window.innerHeight);
-      console.log(offset);
-
       const offsetRaw =
         (e.target.documentElement.scrollTop -
           tunnel__outer.current.offsetTop +
           window.innerHeight) /
         tunnel__inner.current.clientHeight;
-      if (offsetRaw < 0) offsetSet(0);
+      const scrollOnSceneRaw =
+        (e.target.documentElement.scrollTop - tunnel__outer.current.offsetTop) /
+        (tunnel__outer.current.clientHeight -
+          tunnel__inner.current.clientHeight -
+          80);
+      if (scrollOnSceneRaw > 0 && scrollOnSceneRaw <= 1) {
+        scrollOnSceneSet(scrollOnSceneRaw);
+      } else if (scrollOnSceneRaw > 1) {
+        scrollOnSceneSet(1);
+      } else {
+        scrollOnSceneSet(0);
+      }
+      // console.log(
+      //   e.target.documentElement.scrollTop - tunnel__outer.current.offsetTop
+      // );
+      // console.log(tunnel__outer.current.offsetTop);
+      // console.log(tunnel__outer.current.clientHeight);
 
-      if (offsetRaw > 0 && offsetRaw <= 1) offsetSet(offsetRaw);
+      if (offsetRaw < 0) {
+        offsetSet(0);
+        textFinishedSet(false);
+      }
+
+      if (offsetRaw > 0 && offsetRaw <= 1) {
+        offsetSet(offsetRaw);
+        textFinishedSet(false);
+      }
 
       if (offsetRaw > 1) offsetSet(1);
     };
@@ -68,7 +96,32 @@ const Tunnel = () => {
               </div>
             </div>
           </a.div>
+          <a.div className="scene__text">
+            {offset >= 1 ? (
+              <Typewriter
+                options={{
+                  delay: 28,
+                }}
+                onInit={(typewriter) => {
+                  typewriter
+                    .typeString("Hi!")
+
+                    .pauseFor(100)
+                    .deleteAll()
+                    .typeString("I will gladly make website for you!")
+                    .callFunction(() => {
+                      textFinishedSet(true);
+                    })
+                    .start();
+                }}
+              />
+            ) : null}
+
+            {/* <Underline /> */}
+            <a.hr style={scrollWidth} className="scene__text__underline" />
+          </a.div>
         </div>
+
         {/* <a.div style={contentPropsLB} className="tunnel__box__lb"></a.div>
         <a.div style={contentPropsRB} className="tunnel__box__rb"></a.div> */}
       </div>
