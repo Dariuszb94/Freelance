@@ -25,6 +25,7 @@ const Tunnel = () => {
   const scrollWidth = useSpring({
     width: `${scrollOnScene > 0 ? scrollOnScene * 100 : 0}%`,
     opacity: `${scrollOnScene <= 0 ? 0 : 1}`,
+    boxShadow: `0px 0px 8px ${8 * scrollOnScene}px #8306b1`,
   });
   const contentPropsRT = useSpring({
     opacity: offset,
@@ -33,6 +34,24 @@ const Tunnel = () => {
     transform: `translate(${-100 * offset}%, ${-50 + 50 * offset}%) rotate(${
       offset * -45
     }deg)`,
+  });
+  const illuminateLeft = useSpring({
+    background: `linear-gradient(
+      to right,
+      #8306b1 -89%,
+      rgba(255, 255, 255, 0) ${
+        window.innerWidth < 500 ? scrollOnScene * 70 : scrollOnScene * 100
+      }%
+    )`,
+  });
+  const illuminateRight = useSpring({
+    background: `linear-gradient(
+      to left,
+      #8306b1 -89%,
+      rgba(255, 255, 255, 0) ${
+        window.innerWidth < 500 ? scrollOnScene * 70 : scrollOnScene * 100
+      }%
+    )`,
   });
   useEffect(() => {
     const onScroll = (e) => {
@@ -84,7 +103,10 @@ const Tunnel = () => {
             <div className="spotlight__inner">
               <Spotlight />
               <div className="spotlight__inner__light">
-                <div className="spotlight__inner__light__bg"></div>
+                <a.div
+                  className="spotlight__inner__light__bg"
+                  style={illuminateLeft}
+                ></a.div>
               </div>
             </div>
           </a.div>
@@ -92,7 +114,10 @@ const Tunnel = () => {
             <div className="spotlight__inner">
               <Spotlight />
               <div className="spotlight__inner__light">
-                <div className="spotlight__inner__light__bg"></div>
+                <a.div
+                  className="spotlight__inner__light__bg"
+                  style={illuminateRight}
+                ></a.div>
               </div>
             </div>
           </a.div>
