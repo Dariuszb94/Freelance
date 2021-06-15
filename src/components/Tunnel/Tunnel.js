@@ -1,15 +1,30 @@
-import React, { useState, useCallback, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+  useRef,
+  Fragment,
+} from "react";
 import "./Tunnel.scss";
-import { useSpring, animated as a, interpolate } from "react-spring";
+import {
+  useSpring,
+  animated as a,
+  interpolate,
+  config,
+  useTrail,
+} from "react-spring";
 import Lamp from "../../assets/spotlight.svg";
 import Spotlight from "./TunnelComponents/Spotlight";
 import "aos/dist/aos.css";
 import Typewriter from "typewriter-effect";
 import Underline from "./TunnelComponents/Underline";
+import Texts from "./TunnelComponents/Texts";
+
 const Tunnel = () => {
   const tunnel__outer = useRef(null);
   const tunnel__inner = useRef(null);
-
+  const [toggle, setToggle] = useState(false);
   const [offset, offsetSet] = useState(0);
   const [textFinished, textFinishedSet] = useState(false);
   const [scrollOnScene, scrollOnSceneSet] = useState(0);
@@ -53,6 +68,19 @@ const Tunnel = () => {
       }%
     )`,
   });
+  const circlePath = `M18 2.0845
+a 15.9155 15.9155 0 0 1 0 31.831
+a 15.9155 15.9155 0 0 1 0 -31.831`;
+
+  useEffect(() => {
+    // `setImmediate` is roughly equal to `setTimeout(() => { ... }, 0)
+    // Using `setToggle` without `setImmediate` breaks the animation
+    // as we first need to allow for the measurement of the `path`
+    // lengths using `.getTotalLength()`
+    setImmediate(() => {
+      setToggle(true);
+    });
+  }, []);
   useEffect(() => {
     const onScroll = (e) => {
       const offsetRaw =
@@ -72,12 +100,6 @@ const Tunnel = () => {
       } else {
         scrollOnSceneSet(0);
       }
-      // console.log(
-      //   e.target.documentElement.scrollTop - tunnel__outer.current.offsetTop
-      // );
-      // console.log(tunnel__outer.current.offsetTop);
-      // console.log(tunnel__outer.current.clientHeight);
-
       if (offsetRaw < 0) {
         offsetSet(0);
         textFinishedSet(false);
@@ -121,6 +143,7 @@ const Tunnel = () => {
               </div>
             </div>
           </a.div>
+          <Texts />
           <a.div className="scene__text">
             {offset >= 1 ? (
               <Typewriter
@@ -133,7 +156,7 @@ const Tunnel = () => {
 
                     .pauseFor(100)
                     .deleteAll()
-                    .typeString("I will gladly make website for you!")
+                    .typeString("Keep scrolling, please!")
                     .callFunction(() => {
                       textFinishedSet(true);
                     })
