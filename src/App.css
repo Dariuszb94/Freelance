@@ -2,15 +2,22 @@
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  font-size: 10px;
 }
-
+:root {
+  font-size: 15px;
+}
 @media (min-width: 500px) {
-  body {
-    background: linear-gradient(
-      to left,
-      #8306b1 -89%,
-      rgba(255, 255, 255, 0) 95%
-    );
+  :root {
+    font-size: 18px;
   }
+}
+@media (min-width: 1000px) {
+  :root {
+    font-size: 22px;
+  }
+}
+.Typewriter {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }

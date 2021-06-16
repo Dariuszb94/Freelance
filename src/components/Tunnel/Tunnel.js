@@ -68,15 +68,8 @@ const Tunnel = () => {
       }%
     )`,
   });
-  const circlePath = `M18 2.0845
-a 15.9155 15.9155 0 0 1 0 31.831
-a 15.9155 15.9155 0 0 1 0 -31.831`;
 
   useEffect(() => {
-    // `setImmediate` is roughly equal to `setTimeout(() => { ... }, 0)
-    // Using `setToggle` without `setImmediate` breaks the animation
-    // as we first need to allow for the measurement of the `path`
-    // lengths using `.getTotalLength()`
     setImmediate(() => {
       setToggle(true);
     });
@@ -143,7 +136,7 @@ a 15.9155 15.9155 0 0 1 0 -31.831`;
               </div>
             </div>
           </a.div>
-          <Texts />
+          <Texts scrollOnScene={scrollOnScene} />
           <a.div className="scene__text">
             {offset >= 1 ? (
               <Typewriter
@@ -152,9 +145,7 @@ a 15.9155 15.9155 0 0 1 0 -31.831`;
                 }}
                 onInit={(typewriter) => {
                   typewriter
-                    .typeString("Hi!")
 
-                    .pauseFor(100)
                     .deleteAll()
                     .typeString("Keep scrolling, please!")
                     .callFunction(() => {
@@ -164,14 +155,9 @@ a 15.9155 15.9155 0 0 1 0 -31.831`;
                 }}
               />
             ) : null}
-
-            {/* <Underline /> */}
             <a.hr style={scrollWidth} className="scene__text__underline" />
           </a.div>
         </div>
-
-        {/* <a.div style={contentPropsLB} className="tunnel__box__lb"></a.div>
-        <a.div style={contentPropsRB} className="tunnel__box__rb"></a.div> */}
       </div>
     </a.section>
   );

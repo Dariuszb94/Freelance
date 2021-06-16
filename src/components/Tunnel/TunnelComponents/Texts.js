@@ -15,8 +15,12 @@ import {
   useTrail,
 } from "react-spring";
 import { useDebounce } from "use-debounce";
-const Hello = ["H", "e", "l", "l", "o"];
-const World = ["W", "o", "r", "l", "d"];
+const Hello = ["M", "o", "d", "e", "r", "n"];
+const World = ["D", "e", "s", "i", "g", "n"];
+const Top = ["T", "o", "p"];
+const Quality = ["Q", "u", "a", "l", "i", "t", "y"];
+const Responsive = ["R", "e", "s", "p", "o", "n", "s", "i", "v", "e"];
+
 function Trail({ open, children, ...props }) {
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
@@ -99,19 +103,49 @@ const SqueezeSpring = ({ children }) => {
   );
 };
 
-const Texts = () => {
+const Texts = ({ ...props }) => {
+  const ResponsiveOpacity = useSpring({
+    opacity: props.scrollOnScene > 0.8 ? 1 : 0,
+    color: "red",
+  });
   return (
-    <h1 className="header">
-      <Trail>
-        {Hello.map((word) => (
-          <SqueezeSpring className="letter">{word}</SqueezeSpring>
-        ))}
-        &nbsp;&nbsp;
-        {World.map((word) => (
-          <SqueezeSpring>{word}</SqueezeSpring>
-        ))}
-      </Trail>
-    </h1>
+    <div className="slogans">
+      <div className="slogan">
+        {props.scrollOnScene > 0 ? (
+          <Trail>
+            {Hello.map((word) => (
+              <SqueezeSpring className="letter">{word}</SqueezeSpring>
+            ))}
+            &nbsp;&nbsp;
+            {World.map((word) => (
+              <SqueezeSpring>{word}</SqueezeSpring>
+            ))}
+          </Trail>
+        ) : null}
+      </div>
+      <div className="slogan">
+        {props.scrollOnScene > 0.4 ? (
+          <Trail>
+            {Top.map((word) => (
+              <SqueezeSpring className="letter">{word}</SqueezeSpring>
+            ))}
+            &nbsp;&nbsp;
+            {Quality.map((word) => (
+              <SqueezeSpring>{word}</SqueezeSpring>
+            ))}
+          </Trail>
+        ) : null}
+      </div>
+      <div className="slogan">
+        {props.scrollOnScene > 0.8 ? (
+          <Trail>
+            {Responsive.map((word) => (
+              <SqueezeSpring className="letter">{word}</SqueezeSpring>
+            ))}
+          </Trail>
+        ) : null}
+      </div>
+    </div>
   );
 };
 
