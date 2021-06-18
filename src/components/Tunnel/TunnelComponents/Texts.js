@@ -111,20 +111,8 @@ const Texts = ({ ...props }) => {
 
   const shadow = useSpring({
     textShadow: `0px 0px ${
-      props.scrollOnScene >= 0.6 ? 50 * (props.scrollOnScene - 0.6) : -1
-    }px #fff, 0px 0px ${
-      props.scrollOnScene >= 0.6 ? 75 * (props.scrollOnScene - 0.6) : 0
-    }px #fff, 0px 0px ${
-      props.scrollOnScene >= 0.6 ? 100 * (props.scrollOnScene - 0.6) : 0
-    }px #8306b1,0px 0px ${
-      props.scrollOnScene >= 0.6 ? 125 * (props.scrollOnScene - 0.6) : 0
-    }px #8306b1,0px 0px ${
-      props.scrollOnScene >= 0.6 ? 150 * (props.scrollOnScene - 0.6) : 0
-    }px #8306b1,0px 0px ${
-      props.scrollOnScene >= 0.6 ? 175 * (props.scrollOnScene - 0.6) : 0
-    }px #8306b1, 0px 0px ${
-      props.scrollOnScene >= 0.6 ? 200 * (props.scrollOnScene - 0.6) : 0
-    }px #8306b1 `,
+      props.scrollOnScene >= 0.6 ? 24 * (props.scrollOnScene - 0.6) : 0
+    }px #8306b1`,
   });
   return (
     <div className="slogans">

@@ -20,7 +20,7 @@ import "aos/dist/aos.css";
 import Typewriter from "typewriter-effect";
 import Underline from "./TunnelComponents/Underline";
 import Texts from "./TunnelComponents/Texts";
-
+import { useDebounce } from "use-debounce";
 const Tunnel = () => {
   const tunnel__outer = useRef(null);
   const tunnel__inner = useRef(null);
@@ -86,6 +86,7 @@ const Tunnel = () => {
         (tunnel__outer.current.clientHeight -
           tunnel__inner.current.clientHeight -
           80);
+
       if (scrollOnSceneRaw > 0 && scrollOnSceneRaw <= 1) {
         scrollOnSceneSet(scrollOnSceneRaw);
       } else if (scrollOnSceneRaw > 1) {
