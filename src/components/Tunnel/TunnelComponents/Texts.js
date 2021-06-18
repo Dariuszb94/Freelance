@@ -108,9 +108,15 @@ const Texts = ({ ...props }) => {
     opacity: props.scrollOnScene > 0.8 ? 1 : 0,
     color: "red",
   });
+
+  const shadow = useSpring({
+    textShadow: `0px 0px ${
+      props.scrollOnScene >= 0.6 ? 24 * (props.scrollOnScene - 0.6) : 0
+    }px #8306b1`,
+  });
   return (
     <div className="slogans">
-      <div className="slogan">
+      <a.div className="slogan" style={shadow}>
         {props.scrollOnScene > 0 ? (
           <Trail>
             {Hello.map((word) => (
@@ -122,9 +128,9 @@ const Texts = ({ ...props }) => {
             ))}
           </Trail>
         ) : null}
-      </div>
-      <div className="slogan">
-        {props.scrollOnScene > 0.4 ? (
+      </a.div>
+      <a.div className="slogan" style={shadow}>
+        {props.scrollOnScene > 0.3 ? (
           <Trail>
             {Top.map((word) => (
               <SqueezeSpring className="letter">{word}</SqueezeSpring>
@@ -135,16 +141,16 @@ const Texts = ({ ...props }) => {
             ))}
           </Trail>
         ) : null}
-      </div>
-      <div className="slogan">
-        {props.scrollOnScene > 0.8 ? (
+      </a.div>
+      <a.div className="slogan" style={shadow}>
+        {props.scrollOnScene > 0.6 ? (
           <Trail>
             {Responsive.map((word) => (
               <SqueezeSpring className="letter">{word}</SqueezeSpring>
             ))}
           </Trail>
         ) : null}
-      </div>
+      </a.div>
     </div>
   );
 };

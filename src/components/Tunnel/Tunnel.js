@@ -145,9 +145,8 @@ const Tunnel = () => {
                 }}
                 onInit={(typewriter) => {
                   typewriter
-
                     .deleteAll()
-                    .typeString("Keep scrolling, please!")
+                    .typeString("Please keep scrolling!")
                     .callFunction(() => {
                       textFinishedSet(true);
                     })
