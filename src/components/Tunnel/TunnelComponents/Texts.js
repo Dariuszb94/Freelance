@@ -15,8 +15,7 @@ import {
   useTrail,
 } from "react-spring";
 import { useDebounce } from "use-debounce";
-const Hello = ["M", "o", "d", "e", "r", "n"];
-const World = ["D", "e", "s", "i", "g", "n"];
+const First = ["S", "t", "y", "l", "i", "s", "h"];
 const Top = ["T", "o", "p"];
 const Quality = ["Q", "u", "a", "l", "i", "t", "y"];
 const Responsive = ["R", "e", "s", "p", "o", "n", "s", "i", "v", "e"];
@@ -111,20 +110,16 @@ const Texts = ({ ...props }) => {
 
   const shadow = useSpring({
     textShadow: `0px 0px ${
-      props.scrollOnScene >= 0.6 ? 24 * (props.scrollOnScene - 0.6) : 0
-    }px #8306b1`,
+      props.scrollOnScene >= 0.6 ? 50 * (props.scrollOnScene - 0.6) : 0
+    }px #fff`,
   });
   return (
     <div className="slogans">
       <a.div className="slogan" style={shadow}>
         {props.scrollOnScene > 0 ? (
           <Trail>
-            {Hello.map((word) => (
+            {First.map((word) => (
               <SqueezeSpring className="letter">{word}</SqueezeSpring>
-            ))}
-            &nbsp;&nbsp;
-            {World.map((word) => (
-              <SqueezeSpring>{word}</SqueezeSpring>
             ))}
           </Trail>
         ) : null}
