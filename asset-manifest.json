@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Freelance/static/css/main.6747ed29.chunk.css",
-    "main.js": "/Freelance/static/js/main.3084f2ac.chunk.js",
-    "main.js.map": "/Freelance/static/js/main.3084f2ac.chunk.js.map",
+    "main.js": "/Freelance/static/js/main.1058acd7.chunk.js",
+    "main.js.map": "/Freelance/static/js/main.1058acd7.chunk.js.map",
     "runtime-main.js": "/Freelance/static/js/runtime-main.6c7387e7.js",
     "runtime-main.js.map": "/Freelance/static/js/runtime-main.6c7387e7.js.map",
     "static/css/2.7fc9bc2b.chunk.css": "/Freelance/static/css/2.7fc9bc2b.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.7fc9bc2b.chunk.css",
     "static/js/2.28509221.chunk.js",
     "static/css/main.6747ed29.chunk.css",
-    "static/js/main.3084f2ac.chunk.js"
+    "static/js/main.1058acd7.chunk.js"
   ]
 }
