@@ -12,8 +12,15 @@
     -moz-filter: drop-shadow(1px 0px 12px #8306b1);
   }
 }
+.icon-container {
+  height: 60px;
+  margin-left: 28px;
+}
 span {
   display: block;
+}
+.icon-container svg {
+  height: 100%;
 }
 .slogans {
   display: flex;
@@ -23,6 +30,7 @@ span {
 .slogan {
   display: flex;
   margin-bottom: 40px;
+  align-items: center;
   font-size: 2.6rem;
   font-weight: bold;
   color: #8306b1;

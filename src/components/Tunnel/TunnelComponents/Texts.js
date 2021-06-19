@@ -15,10 +15,13 @@ import {
   useTrail,
 } from "react-spring";
 import { useDebounce } from "use-debounce";
+import RWD from "./RWD";
+import Crown from "./Crown";
+
 const First = ["S", "t", "y", "l", "i", "s", "h"];
 const Top = ["T", "o", "p"];
 const Quality = ["Q", "u", "a", "l", "i", "t", "y"];
-const Responsive = ["R", "e", "s", "p", "o", "n", "s", "i", "v", "e"];
+const Third = ["R", "W", "D"];
 
 function Trail({ open, children, ...props }) {
   const items = React.Children.toArray(children);
@@ -126,24 +129,30 @@ const Texts = ({ ...props }) => {
       </a.div>
       <a.div className="slogan" style={shadow}>
         {props.scrollOnScene > 0.3 ? (
-          <Trail>
-            {Top.map((word) => (
-              <SqueezeSpring className="letter">{word}</SqueezeSpring>
-            ))}
-            &nbsp;&nbsp;
-            {Quality.map((word) => (
-              <SqueezeSpring>{word}</SqueezeSpring>
-            ))}
-          </Trail>
+          <Fragment>
+            <Trail>
+              {Top.map((word) => (
+                <SqueezeSpring className="letter">{word}</SqueezeSpring>
+              ))}
+              &nbsp;&nbsp;
+              {Quality.map((word) => (
+                <SqueezeSpring>{word}</SqueezeSpring>
+              ))}
+            </Trail>
+            <Crown />
+          </Fragment>
         ) : null}
       </a.div>
       <a.div className="slogan" style={shadow}>
         {props.scrollOnScene > 0.6 ? (
-          <Trail>
-            {Responsive.map((word) => (
-              <SqueezeSpring className="letter">{word}</SqueezeSpring>
-            ))}
-          </Trail>
+          <Fragment>
+            <Trail>
+              {Third.map((word) => (
+                <SqueezeSpring className="letter">{word}</SqueezeSpring>
+              ))}
+            </Trail>
+            <RWD />
+          </Fragment>
         ) : null}
       </a.div>
     </div>
