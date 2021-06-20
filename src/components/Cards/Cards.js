@@ -1,19 +1,20 @@
 import { render } from "react-dom";
-import React, { useState } from "react";
-import { useSprings, animated, interpolate } from "react-spring";
+import React, { useState, useEffect } from "react";
+import { useSprings, animated, interpolate, useSpring } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "./Cards.scss";
-
+import Immergas from "../../assets/immergas.jpg";
+import Pradom from "../../assets/pradom.jpg";
+import { useInView } from "react-intersection-observer";
 const cards = [
-  "https://upload.wikimedia.org/wikipedia/en/f/f5/RWS_Tarot_08_Strength.jpg",
-  "https://upload.wikimedia.org/wikipedia/en/5/53/RWS_Tarot_16_Tower.jpg",
-  "https://upload.wikimedia.org/wikipedia/en/9/9b/RWS_Tarot_07_Chariot.jpg",
-  "https://upload.wikimedia.org/wikipedia/en/d/db/RWS_Tarot_06_Lovers.jpg",
-  "https://upload.wikimedia.org/wikipedia/en/thumb/8/88/RWS_Tarot_02_High_Priestess.jpg/690px-RWS_Tarot_02_High_Priestess.jpg",
-  "https://upload.wikimedia.org/wikipedia/en/d/de/RWS_Tarot_01_Magician.jpg",
+  { link: "pradom.pl", img: Pradom },
+  { link: "25lat.immergas.pl", img: Immergas },
 ];
 
 export default function Deck() {
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+  });
   // These two are just helpers, they curate spring data, values that are later being interpolated into css
   const to = (i) => ({
     x: 0,
@@ -22,18 +23,31 @@ export default function Deck() {
     rot: -10 + Math.random() * 20,
     delay: i * 100,
   });
-  const from = (i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
+  const from = (i) => ({
+    x: 0,
+    rot: 0,
+    scale: 1.5,
+    y: -1000,
+  });
   // This is being used down there in the view, it interpolates rotation and scale into a css transform
   const trans = (r, s) =>
     `perspective(1500px) rotateX(30deg) rotateY(${
       r / 10
     }deg) rotateZ(${r}deg) scale(${s})`;
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
+  const appear = useSpring({
+    translateY: `${!inView ? 400 * Math.random() : 0}px`,
+    translateX: `${!inView ? 300 * Math.random() : 0}px`,
+    opacity: `${!inView ? 0 : 1}`,
+  });
   const [props, set] = useSprings(cards.length, (i) => ({
     ...to(i),
     from: from(i),
   })); // Create a bunch of springs using the helpers above
   // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
+  useEffect(() => {
+    console.log(inView);
+  }, [inView]);
   const bind = useGesture(
     ({
       args: [index],
@@ -43,7 +57,7 @@ export default function Deck() {
       direction: [xDir],
       velocity,
     }) => {
-      const trigger = velocity > 0.2; // If you flick hard enough it should trigger the card to fly out
+      const trigger = velocity > 0.15; // If you flick hard enough it should trigger the card to fly out
       const dir = xDir < 0 ? -1 : 1; // Direction should either point left or right
       if (!down && trigger) gone.add(index); // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
       set((i) => {
@@ -66,33 +80,36 @@ export default function Deck() {
   );
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
-    <section className="projects">
+    <section className="projects" ref={ref}>
       <div className="projects__inner">
         {props.map(({ x, y, rot, scale }, i) => (
           <animated.div
             className="card-container"
             key={i}
-            style={{
-              transform: interpolate(
-                [x, y],
-                (x, y) => `translate3d(${x}px,${y}px,0)`
-              ),
-            }}
+            style={Object.assign(
+              {
+                transform: interpolate(
+                  [x, y],
+                  (x, y) => `translate3d(${x}px,${y}px,0)`
+                ),
+              },
+              appear
+            )}
           >
             {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
             <animated.div
               {...bind(i)}
               style={{
                 transform: interpolate([rot, scale], trans),
-                backgroundImage: `url(${cards[i]})`,
               }}
               className="card"
-            />
+            >
+              <img src={cards[i].img} />
+              <a href={cards[i].link}>Check it out</a>
+            </animated.div>
           </animated.div>
         ))}
       </div>
     </section>
   );
 }
-
-render(<Deck />, document.getElementById("root"));
