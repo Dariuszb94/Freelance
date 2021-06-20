@@ -17,8 +17,9 @@ import {
 import { useDebounce } from "use-debounce";
 import RWD from "./RWD";
 import Crown from "./Crown";
+import Thunder from "./Thunder";
 
-const First = ["S", "t", "y", "l", "i", "s", "h"];
+const First = ["F", "a", "s", "t"];
 const Top = ["T", "o", "p"];
 const Quality = ["Q", "u", "a", "l", "i", "t", "y"];
 const Third = ["R", "W", "D"];
@@ -120,11 +121,14 @@ const Texts = ({ ...props }) => {
     <div className="slogans">
       <a.div className="slogan" style={shadow}>
         {props.scrollOnScene > 0 ? (
-          <Trail>
-            {First.map((word) => (
-              <SqueezeSpring className="letter">{word}</SqueezeSpring>
-            ))}
-          </Trail>
+          <Fragment>
+            <Trail>
+              {First.map((word) => (
+                <SqueezeSpring className="letter">{word}</SqueezeSpring>
+              ))}
+            </Trail>
+            <Thunder />
+          </Fragment>
         ) : null}
       </a.div>
       <a.div className="slogan" style={shadow}>
