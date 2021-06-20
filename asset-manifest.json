@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/Freelance/static/css/main.8a783c45.chunk.css",
-    "main.js": "/Freelance/static/js/main.70e11c0a.chunk.js",
-    "main.js.map": "/Freelance/static/js/main.70e11c0a.chunk.js.map",
-    "runtime-main.js": "/Freelance/static/js/runtime-main.29bb13cf.js",
-    "runtime-main.js.map": "/Freelance/static/js/runtime-main.29bb13cf.js.map",
+    "main.css": "/Freelance/static/css/main.a175dc10.chunk.css",
+    "main.js": "/Freelance/static/js/main.e1bcfa33.chunk.js",
+    "main.js.map": "/Freelance/static/js/main.e1bcfa33.chunk.js.map",
+    "runtime-main.js": "/Freelance/static/js/runtime-main.2f7cf308.js",
+    "runtime-main.js.map": "/Freelance/static/js/runtime-main.2f7cf308.js.map",
     "static/css/2.7fc9bc2b.chunk.css": "/Freelance/static/css/2.7fc9bc2b.chunk.css",
-    "static/js/2.04ed7695.chunk.js": "/Freelance/static/js/2.04ed7695.chunk.js",
-    "static/js/2.04ed7695.chunk.js.map": "/Freelance/static/js/2.04ed7695.chunk.js.map",
-    "static/js/3.6b2edf48.chunk.js": "/Freelance/static/js/3.6b2edf48.chunk.js",
-    "static/js/3.6b2edf48.chunk.js.map": "/Freelance/static/js/3.6b2edf48.chunk.js.map",
+    "static/js/2.399b4925.chunk.js": "/Freelance/static/js/2.399b4925.chunk.js",
+    "static/js/2.399b4925.chunk.js.map": "/Freelance/static/js/2.399b4925.chunk.js.map",
+    "static/js/3.67922c85.chunk.js": "/Freelance/static/js/3.67922c85.chunk.js",
+    "static/js/3.67922c85.chunk.js.map": "/Freelance/static/js/3.67922c85.chunk.js.map",
     "index.html": "/Freelance/index.html",
     "static/css/2.7fc9bc2b.chunk.css.map": "/Freelance/static/css/2.7fc9bc2b.chunk.css.map",
-    "static/css/main.8a783c45.chunk.css.map": "/Freelance/static/css/main.8a783c45.chunk.css.map",
-    "static/js/2.04ed7695.chunk.js.LICENSE.txt": "/Freelance/static/js/2.04ed7695.chunk.js.LICENSE.txt",
+    "static/css/main.a175dc10.chunk.css.map": "/Freelance/static/css/main.a175dc10.chunk.css.map",
+    "static/js/2.399b4925.chunk.js.LICENSE.txt": "/Freelance/static/js/2.399b4925.chunk.js.LICENSE.txt",
     "static/media/spotlight.svg": "/Freelance/static/media/spotlight.eea4d5b2.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.29bb13cf.js",
+    "static/js/runtime-main.2f7cf308.js",
     "static/css/2.7fc9bc2b.chunk.css",
-    "static/js/2.04ed7695.chunk.js",
-    "static/css/main.8a783c45.chunk.css",
-    "static/js/main.70e11c0a.chunk.js"
+    "static/js/2.399b4925.chunk.js",
+    "static/css/main.a175dc10.chunk.css",
+    "static/js/main.e1bcfa33.chunk.js"
   ]
 }
