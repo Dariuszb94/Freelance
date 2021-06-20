@@ -63,7 +63,7 @@ export default function Thunder() {
   }, []);
 
   return (
-    <div class="icon-container">
+    <div className="icon-container">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="60"

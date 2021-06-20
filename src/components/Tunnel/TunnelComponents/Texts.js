@@ -122,9 +122,11 @@ const Texts = ({ ...props }) => {
       <a.div className="slogan" style={shadow}>
         {props.scrollOnScene > 0 ? (
           <Fragment>
-            <Trail>
-              {First.map((word) => (
-                <SqueezeSpring className="letter">{word}</SqueezeSpring>
+            <Trail key="trail-1">
+              {First.map((word, index) => (
+                <SqueezeSpring key={word} className="letter">
+                  {word}
+                </SqueezeSpring>
               ))}
             </Trail>
             <Thunder />
@@ -134,13 +136,15 @@ const Texts = ({ ...props }) => {
       <a.div className="slogan" style={shadow}>
         {props.scrollOnScene > 0.3 ? (
           <Fragment>
-            <Trail>
-              {Top.map((word) => (
-                <SqueezeSpring className="letter">{word}</SqueezeSpring>
+            <Trail key="trail-2">
+              {Top.map((word, index) => (
+                <SqueezeSpring key={index} className="letter">
+                  {word}
+                </SqueezeSpring>
               ))}
               &nbsp;&nbsp;
-              {Quality.map((word) => (
-                <SqueezeSpring>{word}</SqueezeSpring>
+              {Quality.map((word, index) => (
+                <SqueezeSpring key={index}>{word}</SqueezeSpring>
               ))}
             </Trail>
             <Crown />
@@ -150,9 +154,11 @@ const Texts = ({ ...props }) => {
       <a.div className="slogan" style={shadow}>
         {props.scrollOnScene > 0.6 ? (
           <Fragment>
-            <Trail>
-              {Third.map((word) => (
-                <SqueezeSpring className="letter">{word}</SqueezeSpring>
+            <Trail key="trail-3">
+              {Third.map((word, index) => (
+                <SqueezeSpring key={index} className="letter">
+                  {word}
+                </SqueezeSpring>
               ))}
             </Trail>
             <RWD />
