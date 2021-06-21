@@ -6,13 +6,8 @@ function App() {
   return (
     <div className="App">
       <Component />
-
       <Tunnel />
-      <section className="cards-container">
-        <div className="cards">
-          <Deck />
-        </div>
-      </section>
+      <Deck />
     </div>
   );
 }

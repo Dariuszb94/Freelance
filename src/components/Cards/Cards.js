@@ -6,9 +6,11 @@ import "./Cards.scss";
 import Immergas from "../../assets/immergas.jpg";
 import Pradom from "../../assets/pradom.jpg";
 import { useInView } from "react-intersection-observer";
+import Typewriter from "typewriter-effect";
+
 const cards = [
-  { link: "pradom.pl", img: Pradom },
-  { link: "25lat.immergas.pl", img: Immergas },
+  { link: "https://pradom.pl", img: Pradom },
+  { link: "https://25lat.immergas.pl", img: Immergas },
 ];
 
 export default function Deck() {
@@ -82,6 +84,18 @@ export default function Deck() {
   return (
     <section className="projects" ref={ref}>
       <div className="projects__inner">
+        <h2 className="projects__header">
+          {inView ? (
+            <Typewriter
+              options={{
+                delay: 28,
+              }}
+              onInit={(typewriter) => {
+                typewriter.deleteAll().typeString("Works").start();
+              }}
+            />
+          ) : null}
+        </h2>
         {props.map(({ x, y, rot, scale }, i) => (
           <animated.div
             className="card-container"
@@ -105,7 +119,9 @@ export default function Deck() {
               className="card"
             >
               <img src={cards[i].img} />
-              <a href={cards[i].link}>Check it out</a>
+              <a className="card__link" target="_blank" href={cards[i].link}>
+                Check it out
+              </a>
             </animated.div>
           </animated.div>
         ))}
