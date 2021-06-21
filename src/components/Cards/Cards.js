@@ -38,8 +38,8 @@ export default function Deck() {
     }deg) rotateZ(${r}deg) scale(${s})`;
   const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
   const appear = useSpring({
-    translateY: `${!inView ? 400 * Math.random() : 0}px`,
-    translateX: `${!inView ? 300 * Math.random() : 0}px`,
+    translateY: `${!inView ? 500 * Math.random() : 0}px`,
+    translateX: `${!inView ? 400 * Math.random() : 0}px`,
     opacity: `${!inView ? 0 : 1}`,
   });
   const [props, set] = useSprings(cards.length, (i) => ({
@@ -47,9 +47,7 @@ export default function Deck() {
     from: from(i),
   })); // Create a bunch of springs using the helpers above
   // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
-  useEffect(() => {
-    console.log(inView);
-  }, [inView]);
+
   const bind = useGesture(
     ({
       args: [index],
@@ -88,7 +86,7 @@ export default function Deck() {
           {inView ? (
             <Typewriter
               options={{
-                delay: 28,
+                delay: 68,
               }}
               onInit={(typewriter) => {
                 typewriter.deleteAll().typeString("Works").start();
@@ -111,18 +109,20 @@ export default function Deck() {
             )}
           >
             {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
-            <animated.div
-              {...bind(i)}
-              style={{
-                transform: interpolate([rot, scale], trans),
-              }}
-              className="card"
-            >
-              <img src={cards[i].img} />
-              <a className="card__link" target="_blank" href={cards[i].link}>
-                Check it out
-              </a>
-            </animated.div>
+            {inView ? (
+              <animated.div
+                {...bind(i)}
+                style={{
+                  transform: interpolate([rot, scale], trans),
+                }}
+                className="card"
+              >
+                <img src={cards[i].img} />
+                <a className="card__link" target="_blank" href={cards[i].link}>
+                  Check it out
+                </a>
+              </animated.div>
+            ) : null}
           </animated.div>
         ))}
       </div>
