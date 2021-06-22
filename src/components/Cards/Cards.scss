@@ -12,6 +12,18 @@
   position: relative;
   overflow: hidden;
 }
+.projects__bg {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  filter: drop-shadow(1px 0px 12px #8306b1);
+  -webkit-filter: drop-shadow(1px 0px 12px #8306b1);
+  -moz-filter: drop-shadow(1px 0px 12px #8306b1);
+}
+.projects__bg path {
+  opacity: 0.2;
+}
 
 .card-container {
   position: absolute;

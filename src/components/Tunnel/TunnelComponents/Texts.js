@@ -107,14 +107,9 @@ const SqueezeSpring = ({ children }) => {
 };
 
 const Texts = ({ ...props }) => {
-  const ResponsiveOpacity = useSpring({
-    opacity: props.scrollOnScene > 0.8 ? 1 : 0,
-    color: "red",
-  });
-
   const shadow = useSpring({
     textShadow: `0px 0px ${
-      props.scrollOnScene >= 0.6 ? 50 * (props.scrollOnScene - 0.6) : 0
+      props.scrollOnScene >= 0.6 ? 20 * (props.scrollOnScene - 0.6) : 0
     }px #fff`,
   });
   return (

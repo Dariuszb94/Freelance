@@ -7,7 +7,8 @@ import Immergas from "../../assets/immergas.jpg";
 import Pradom from "../../assets/pradom.jpg";
 import { useInView } from "react-intersection-observer";
 import Typewriter from "typewriter-effect";
-
+import Swipe from "../../assets/swipe.svg";
+import Bg from "./CardsComponent/Bg";
 const cards = [
   { link: "https://pradom.pl", img: Pradom },
   { link: "https://25lat.immergas.pl", img: Immergas },
@@ -82,6 +83,7 @@ export default function Deck() {
   return (
     <section className="projects" ref={ref}>
       <div className="projects__inner">
+        <Bg />
         <h2 className="projects__header">
           {inView ? (
             <Typewriter
