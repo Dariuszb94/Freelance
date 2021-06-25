@@ -1,0 +1,142 @@
+.banner-title {
+  transform: translateZ(35px);
+  font-weight: bold;
+  font-size: 80px;
+  line-height: 94px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.banner-subtitle {
+  transform: translateZ(25px);
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 47px;
+  text-align: left;
+}
+.banner-container {
+  margin: 296px 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.banner {
+  background: #fff;
+  border-radius: 15px;
+  display: inline-block;
+  perspective: 1800px;
+  text-align: center;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform: rotateX(11deg) rotateY(16.5deg);
+  min-width: 800px;
+}
+.fixed-container {
+  position: relative;
+}
+.wrapper-canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#c {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: -1;
+  bottom: -80px;
+}
+
+.loading {
+  position: absolute;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  -webkit-perspective: 120px;
+  -moz-perspective: 120px;
+  -ms-perspective: 120px;
+  perspective: 120px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 120px;
+  top: 200px;
+}
+
+.loader:before {
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  width: 50px;
+  height: 50px;
+  background-color: #9bffaf;
+  animation: flip 1s infinite;
+}
+
+.loader:before {
+  background-color: blue;
+}
+.banner-subtitle-mobile {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  #c {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: -1;
+    bottom: -80px;
+    top: -200px;
+  }
+
+  .banner {
+    min-width: 0px;
+    background: transparent;
+  }
+  .banner-title {
+    margin-bottom: 40px;
+    font-size: 36px;
+    line-height: 1.5;
+    transform: translateZ(0);
+  }
+  .banner-subtitle {
+    display: none;
+  }
+  .banner-subtitle-mobile {
+    font-size: 32px;
+    transform: translateZ(0);
+
+    line-height: 1.5;
+    font-weight: 300;
+
+    text-align: left;
+  }
+  .banner {
+    transform: rotateX(0) rotateY(0);
+  }
+  .banner-container {
+    margin: 80px 0;
+  }
+
+  .skills-header-bg:hover {
+    background: transparent;
+    animation: none;
+  }
+  .cursor-dot-outline,
+  .cursor-dot {
+    display: none;
+  }
+}
