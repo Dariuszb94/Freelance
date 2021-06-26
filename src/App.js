@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Cursor />
-      <FixedBoy />
+      {/* <FixedBoy /> */}
       <Banner />
       <Tunnel />
       <Deck />
