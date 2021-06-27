@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./Banner.scss";
 import { animated as a, useSpring } from "react-spring";
 import Typewriter from "typewriter-effect";
+import Logo from "./BannerComponents/Logo";
 export default function Banner() {
   const shadowRaise = useSpring({
     from: {
@@ -43,6 +44,7 @@ export default function Banner() {
   }, []);
   return (
     <section className="banner-container">
+      <Logo />
       <a.div className="banner">
         <a.h1 style={shadowRaise} className="banner-title">
           I make nice things

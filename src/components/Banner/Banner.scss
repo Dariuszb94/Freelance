@@ -7,7 +7,11 @@
   text-align: left;
   color: #8306b1;
 }
-
+.logo-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
 .banner-subtitle {
   transform: translateZ(25px);
   font-weight: 300;
@@ -29,11 +33,12 @@
 }
 .banner {
   background: #000;
+  width: calc(100% - 100px);
   border-radius: 15px;
   display: inline-block;
   perspective: 1800px;
   max-height: 50vh;
-  padding: 40px;
+  padding: 30px;
   text-align: center;
   display: flex;
   -webkit-box-shadow: 0px 0px 16px 3px #8306b1;
@@ -45,7 +50,12 @@
   transform: rotateX(11deg) rotateY(16.5deg);
   min-width: 800px;
 }
-
+@media (min-width: 1000px) {
+  .banner {
+    width: unset;
+    padding: 40px;
+  }
+}
 .banner-subtitle-mobile {
   display: none;
 }
