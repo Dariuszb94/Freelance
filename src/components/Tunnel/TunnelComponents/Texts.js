@@ -1,22 +1,9 @@
-import React, {
-  useState,
-  useCallback,
-  useMemo,
-  useEffect,
-  useRef,
-  Fragment,
-} from "react";
+import React, { useState, Fragment } from "react";
 import "../Tunnel.scss";
-import {
-  useSpring,
-  animated as a,
-  interpolate,
-  config,
-  useTrail,
-} from "react-spring";
+import { useSpring, animated as a, interpolate, useTrail } from "react-spring";
 import { useDebounce } from "use-debounce";
 import RWD from "./RWD";
-import Crown from "./Crown";
+import Star from "./Star";
 import Thunder from "./Thunder";
 
 const First = ["F", "a", "s", "t"];
@@ -24,7 +11,7 @@ const Top = ["T", "o", "p"];
 const Quality = ["Q", "u", "a", "l", "i", "t", "y"];
 const Third = ["R", "W", "D"];
 
-function Trail({ open, children, ...props }) {
+const Trail = ({ open, children }) => {
   const items = React.Children.toArray(children);
   const trail = useTrail(items.length, {
     config: { mass: 5, tension: 2000, friction: 135 },
@@ -42,7 +29,7 @@ function Trail({ open, children, ...props }) {
     <>
       {trail.map(({ x, y, ...rest }, index) => (
         <a.div
-          key={items[index].key}
+          key={index}
           className="trails-text"
           style={{
             ...rest,
@@ -59,8 +46,6 @@ function Trail({ open, children, ...props }) {
               ],
               (x, y) => `scale(${x},${y})`
             ),
-
-            // r.interpolate((r) => `rotate(${r}deg)`)
           }}
         >
           {items[index]}
@@ -68,7 +53,7 @@ function Trail({ open, children, ...props }) {
       ))}
     </>
   );
-}
+};
 const SqueezeSpring = ({ children }) => {
   const [stateRaw, toggle] = useState(false);
 
@@ -78,7 +63,7 @@ const SqueezeSpring = ({ children }) => {
     to: { x: 1, y: 1 },
     config: { mass: 0.5, tension: 120, friction: 2, precision: 0.001 },
     reset: state,
-    onStart: (state) => toggle(false),
+    onStart: () => toggle(false),
   });
 
   return (
@@ -119,7 +104,7 @@ const Texts = ({ ...props }) => {
           <Fragment>
             <Trail key="trail-1">
               {First.map((word, index) => (
-                <SqueezeSpring key={word} className="letter">
+                <SqueezeSpring key={index} className="letter">
                   {word}
                 </SqueezeSpring>
               ))}
@@ -142,7 +127,7 @@ const Texts = ({ ...props }) => {
                 <SqueezeSpring key={index}>{word}</SqueezeSpring>
               ))}
             </Trail>
-            <Crown />
+            <Star />
           </Fragment>
         ) : null}
       </a.div>

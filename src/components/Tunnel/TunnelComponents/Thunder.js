@@ -1,7 +1,7 @@
 import { useSpring, animated } from "react-spring";
 import { useState, useEffect } from "react";
 
-function useAnimatedPath({ toggle, delay }) {
+const useAnimatedPath = ({ toggle }) => {
   const [length, setLength] = useState(null);
   const animatedStyle = useSpring({
     strokeDashoffset: toggle ? 0 : length,
@@ -19,20 +19,9 @@ function useAnimatedPath({ toggle, delay }) {
       }
     },
   };
-}
+};
 
-function Checkmark({ toggle }) {
-  const animationProps = useAnimatedPath({
-    toggle,
-    delay: 500,
-  });
-
-  return (
-    <animated.path {...animationProps} stroke="#4ADE80" strokeWidth="24" />
-  );
-}
-
-function ShieldPart({ color, d, toggle }) {
+const Part = ({ color, d, toggle }) => {
   const animationStrokeProps = useAnimatedPath({ toggle });
 
   return (
@@ -47,9 +36,9 @@ function ShieldPart({ color, d, toggle }) {
       d={d}
     />
   );
-}
+};
 
-export default function Thunder() {
+const Thunder = () => {
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
@@ -71,16 +60,14 @@ export default function Thunder() {
         fill="none"
         viewBox="0 0 105 114"
       >
-        {/* Left shield part */}
-
-        <ShieldPart
+        <Part
           toggle={toggle}
           d="M69.2128 1.49428L103.7 0.536306L62.6575 39.1358L61.7385 40H63H87.0746L40.6877 77.1096L39.5746 78H41H62.5782L2.37955 111.599L26.872 84.3341L27.6213 83.5H26.5H11.7071L48.3536 46.8536L49.1815 46.0256L48.0109 46.0001L26.1492 45.5249L49.3572 21.3499L49.3607 21.3463L69.2128 1.49428Z"
           color="#8306b1"
           stroke="black"
         />
-        {/* Right shield part */}
       </svg>
     </div>
   );
-}
+};
+export default Thunder;

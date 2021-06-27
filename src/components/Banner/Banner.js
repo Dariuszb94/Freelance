@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Banner.scss";
-import { animated as a, interpolate, useSpring } from "react-spring";
+import { animated as a, useSpring } from "react-spring";
 import Typewriter from "typewriter-effect";
 export default function Banner() {
   const shadowRaise = useSpring({
@@ -21,10 +21,7 @@ export default function Banner() {
   useEffect(() => {
     const banner = document.querySelector(".banner");
     const range = 36;
-
-    // const calcValue = (a, b) => (((a * 100) / b) * (range / 100) -(range / 2)).toFixed(1);
-    const calcValue = (a, b) => ((a / b) * range - range / 2).toFixed(1); // thanks @alice-mx
-
+    const calcValue = (a, b) => ((a / b) * range - range / 2).toFixed(1);
     let timeout;
     document.addEventListener(
       "mousemove",

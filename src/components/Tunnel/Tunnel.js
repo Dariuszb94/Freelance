@@ -1,32 +1,14 @@
-import React, {
-  useState,
-  useCallback,
-  useMemo,
-  useEffect,
-  useRef,
-  Fragment,
-} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Tunnel.scss";
-import {
-  useSpring,
-  animated as a,
-  interpolate,
-  config,
-  useTrail,
-} from "react-spring";
-import Lamp from "../../assets/spotlight.svg";
+import { useSpring, animated as a } from "react-spring";
 import Spotlight from "./TunnelComponents/Spotlight";
 import "aos/dist/aos.css";
 import Typewriter from "typewriter-effect";
-import Underline from "./TunnelComponents/Underline";
 import Texts from "./TunnelComponents/Texts";
-import { useDebounce } from "use-debounce";
 const Tunnel = () => {
   const tunnel__outer = useRef(null);
   const tunnel__inner = useRef(null);
-  const [toggle, setToggle] = useState(false);
   const [offset, offsetSet] = useState(0);
-  const [textFinished, textFinishedSet] = useState(false);
   const [scrollOnScene, scrollOnSceneSet] = useState(0);
   const contentPropsLT = useSpring({
     opacity: offset,
@@ -70,11 +52,6 @@ const Tunnel = () => {
   });
 
   useEffect(() => {
-    setImmediate(() => {
-      setToggle(true);
-    });
-  }, []);
-  useEffect(() => {
     const onScroll = (e) => {
       const offsetRaw =
         (e.target.documentElement.scrollTop -
@@ -96,12 +73,10 @@ const Tunnel = () => {
       }
       if (offsetRaw < 0) {
         offsetSet(0);
-        textFinishedSet(false);
       }
 
       if (offsetRaw > 0 && offsetRaw <= 1) {
         offsetSet(offsetRaw);
-        textFinishedSet(false);
       }
 
       if (offsetRaw > 1) offsetSet(1);
@@ -148,9 +123,6 @@ const Tunnel = () => {
                   typewriter
                     .deleteAll()
                     .typeString("Please keep scrolling!")
-                    .callFunction(() => {
-                      textFinishedSet(true);
-                    })
                     .start();
                 }}
               />

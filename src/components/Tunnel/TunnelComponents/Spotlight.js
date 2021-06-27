@@ -1,4 +1,4 @@
-function Spotlight() {
+const Spotlight = () => {
   return (
     <svg
       width="48"
@@ -11,6 +11,6 @@ function Spotlight() {
       <path d="M48 20.5V30.5V34.5V41L41 36V5L48 0V20.5Z" fill="black" />
     </svg>
   );
-}
+};
 
 export default Spotlight;

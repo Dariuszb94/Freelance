@@ -1,5 +1,4 @@
-import { render } from "react-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSprings, animated, interpolate, useSpring } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import "./Cards.scss";
@@ -7,7 +6,6 @@ import Immergas from "../../assets/immergas.jpg";
 import Pradom from "../../assets/pradom.jpg";
 import { useInView } from "react-intersection-observer";
 import Typewriter from "typewriter-effect";
-import Swipe from "../../assets/swipe.svg";
 import Bg from "./CardsComponent/Bg";
 const cards = [
   { link: "https://pradom.pl", img: Pradom },
@@ -18,7 +16,6 @@ export default function Deck() {
   const { ref, inView } = useInView({
     threshold: 0.2,
   });
-  // These two are just helpers, they curate spring data, values that are later being interpolated into css
   const to = (i) => ({
     x: 0,
     y: i * -4,
@@ -32,7 +29,6 @@ export default function Deck() {
     scale: 1.5,
     y: -1000,
   });
-  // This is being used down there in the view, it interpolates rotation and scale into a css transform
   const trans = (r, s) =>
     `perspective(1500px) rotateX(30deg) rotateY(${
       r / 10
@@ -50,14 +46,7 @@ export default function Deck() {
   // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
 
   const bind = useGesture(
-    ({
-      args: [index],
-      down,
-      delta: [xDelta],
-      distance,
-      direction: [xDir],
-      velocity,
-    }) => {
+    ({ args: [index], down, delta: [xDelta], direction: [xDir], velocity }) => {
       const trigger = velocity > 0.15; // If you flick hard enough it should trigger the card to fly out
       const dir = xDir < 0 ? -1 : 1; // Direction should either point left or right
       if (!down && trigger) gone.add(index); // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
@@ -119,8 +108,13 @@ export default function Deck() {
                 }}
                 className="card"
               >
-                <img src={cards[i].img} />
-                <a className="card__link" target="_blank" href={cards[i].link}>
+                <img src={cards[i].img} alt={cards[i].img} />
+                <a
+                  className="card__link"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={cards[i].link}
+                >
                   Check it out
                 </a>
               </animated.div>

@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  useSprings,
-  animated as a,
-  interpolate,
-  useSpring,
-} from "react-spring";
+import { animated as a, useSpring } from "react-spring";
 
 function Bg() {
   const swipeRight = useSpring({
@@ -48,12 +43,12 @@ function Bg() {
         style={swipeRight}
         d="M281.5 166.57L352.357 236L281.5 305.43V279V277.5H280H1.5V194.5H280H281.5V193V166.57Z"
         stroke="black"
-        stroke-width="3"
+        strokeWidth="3"
       />
       <a.path
         d="M73 142.43L2.1432 73L73 3.56987V30V31.5H74.5L353 31.5V114.5L74.5 114.5H73V116V142.43Z"
         stroke="black"
-        stroke-width="3"
+        strokeWidth="3"
         style={swipeLeft}
       />
     </svg>
