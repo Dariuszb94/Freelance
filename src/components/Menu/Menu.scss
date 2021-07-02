@@ -9,3 +9,92 @@ svg.menu-icon {
   width: 40px;
   height: 40px;
 }
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+.overlay__link {
+  color: black;
+}
+.overlay {
+  position: fixed;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.middle-circle {
+  width: 70vw;
+  height: 70vw;
+  box-shadow: 0px 0px 16px 3px #8306b1;
+  background-color: #8306b1;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  @media (min-width: 700px) {
+    width: 500px;
+    height: 500px;
+  }
+}
+.overlay__inner {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.orbit-small {
+  border: 6px solid #8306b1;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  -webkit-transform: rotate(0deg);
+  position: absolute;
+  box-shadow: 0px 0px 16px 3px #8306b1;
+  border-top-color: #8306b1;
+  width: 74vw;
+  height: 74vw;
+  border-radius: 50%;
+  @media (min-width: 700px) {
+    width: 540px;
+    height: 540px;
+  }
+}
+.orbit-big {
+  border: 6px solid #8306b1;
+  border-bottom-color: #8306b1;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  -webkit-transform: rotate(0deg);
+  position: absolute;
+  box-shadow: 0px 0px 16px 3px #8306b1;
+  border-top-color: transparent;
+  width: 78vw;
+  height: 78vw;
+  border-radius: 50%;
+  @media (min-width: 700px) {
+    height: 580px;
+  }
+}
+.orbit-biggest {
+  border: 6px solid #8306b1;
+  border-bottom-color: #8306b1;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  -webkit-transform: rotate(0deg);
+  position: absolute;
+  box-shadow: 0px 0px 16px 3px #8306b1;
+  border-top-color: transparent;
+  width: 82vw;
+  height: 82vw;
+  border-radius: 50%;
+  @media (min-width: 700px) {
+    height: 620px;
+  }
+}
