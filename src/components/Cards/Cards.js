@@ -70,7 +70,7 @@ export default function Deck() {
   );
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
-    <section className="projects" ref={ref}>
+    <section className="projects" id="projects" ref={ref}>
       <div className="projects__inner">
         <Bg />
         <h2 className="projects__header">

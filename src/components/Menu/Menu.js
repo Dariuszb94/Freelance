@@ -18,7 +18,9 @@ const Menu = () => {
         className="menu-icon"
         onClick={() => menuShowSet((prev) => !prev)}
       />
-      {menuShowDebounce ? <Overlay menuShow={menuShow} /> : null}
+      {menuShowDebounce ? (
+        <Overlay menuShow={menuShow} menuShowSet={menuShowSet} />
+      ) : null}
     </section>
   );
 };

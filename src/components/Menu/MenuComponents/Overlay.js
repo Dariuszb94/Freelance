@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useSpring, animated as a } from "react-spring";
 
-const Overlay = ({ menuShow }) => {
+const Overlay = ({ menuShow, menuShowSet }) => {
   const innerExpand = useSpring({
     to: { transform: "translate(-50%, -50%) scale(1)" },
     from: { transform: "translate(-50%, -50%) scale(0.1)" },
+    config: { duration: 1000 },
   });
   const opacity = useSpring({
     opacity: `${menuShow ? 1 : 0}`,
@@ -35,30 +36,24 @@ const Overlay = ({ menuShow }) => {
         <a.div className="orbit-big" style={orbitBig}></a.div>
         <a.div className="orbit-biggest" style={orbitBiggest}></a.div>
 
-        <ul className="list">
+        <ul className="menu">
           <li>
-            <a className="overlay__link" href="">
-              Skills
+            <a
+              className="overlay__link"
+              href="/#projects"
+              onClick={() => menuShowSet(false)}
+            >
+              Projects
             </a>
           </li>
           <li>
-            <a className="overlay__link" href="">
-              Skills
+            <a className="overlay__link" href="mailto:db@berer.pl">
+              db@berer.pl
             </a>
-          </li>{" "}
+          </li>
           <li>
-            <a className="overlay__link" href="">
-              Skills
-            </a>
-          </li>{" "}
-          <li>
-            <a className="overlay__link" href="">
-              Skills
-            </a>
-          </li>{" "}
-          <li>
-            <a className="overlay__link" href="">
-              Skills
+            <a className="overlay__link" href="tel+48535252562">
+              +48 535 262 562
             </a>
           </li>
         </ul>
