@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useSpring, animated as a } from "react-spring";
+import PhoneIcon from "@material-ui/icons/Phone";
+import MailIcon from "@material-ui/icons/Mail";
 
 const Overlay = ({ menuShow, menuShowSet }) => {
   const innerExpand = useSpring({
@@ -48,12 +50,14 @@ const Overlay = ({ menuShow, menuShowSet }) => {
           </li>
           <li>
             <a className="overlay__link" href="mailto:db@berer.pl">
-              db@berer.pl
+              <MailIcon />
+              <span className="overlay__link__text">db@berer.pl</span>
             </a>
           </li>
           <li>
             <a className="overlay__link" href="tel+48535252562">
-              +48 535 262 562
+              <MailIcon />
+              <span className="overlay__link__text">535 262 562</span>
             </a>
           </li>
         </ul>
