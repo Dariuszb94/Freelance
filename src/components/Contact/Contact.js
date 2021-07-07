@@ -7,7 +7,7 @@ function Contact() {
     threshold: 0.2,
   });
   return (
-    <section ref={ref}>
+    <section ref={ref} className="contact">
       <h2 className="contact__header">
         {inView ? (
           <Typewriter

@@ -8,6 +8,9 @@ h3 {
 ul {
   list-style: none;
 }
+html {
+  background-color: black;
+}
 a,
 button {
   text-decoration: none;
