@@ -56,7 +56,7 @@ const Overlay = ({ menuShow, menuShowSet }) => {
           </li>
           <li>
             <a className="overlay__link" href="tel+48535252562">
-              <MailIcon />
+              <PhoneIcon />
               <span className="overlay__link__text">535 262 562</span>
             </a>
           </li>
