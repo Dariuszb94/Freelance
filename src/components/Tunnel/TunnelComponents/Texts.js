@@ -57,7 +57,7 @@ const Trail = ({ open, children }) => {
 const SqueezeSpring = ({ children }) => {
   const [stateRaw, toggle] = useState(false);
 
-  const [state] = useDebounce(stateRaw, 40);
+  const [state] = useDebounce(stateRaw, 1);
   const { x, y } = useSpring({
     from: { x: !state ? 1 : 0, y: !state ? 1 : 0 },
     to: { x: 1, y: 1 },

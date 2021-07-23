@@ -42,10 +42,6 @@ const Star = () => {
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    // `setImmediate` is roughly equal to `setTimeout(() => { ... }, 0)
-    // Using `setToggle` without `setImmediate` breaks the animation
-    // as we first need to allow for the measurement of the `path`
-    // lengths using `.getTotalLength()`
     setImmediate(() => {
       setToggle(true);
     });
