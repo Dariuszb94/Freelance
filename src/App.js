@@ -5,7 +5,7 @@ import Contact from "./components/Contact/Contact";
 import Banner from "./components/Banner/Banner";
 import Cursor from "./components/Cursor/Cursor";
 import Menu from "./components/Menu/Menu";
-import React, { useState, useEffect } from "react";
+import React from "react";
 function App() {
   return (
     <div className="App">

@@ -136,9 +136,8 @@ const Contact = ({ ...props }) => {
       {inView ? (
         <div className="contact__content">
           <a.a
-            className="slogan"
             href="mailto:db@berer.pl"
-            className="contact__links__link"
+            className="slogan contact__links__link"
           >
             <MailIcon />
             <Fragment>
@@ -152,9 +151,8 @@ const Contact = ({ ...props }) => {
             </Fragment>
           </a.a>
           <a.a
-            className="slogan"
             href="mailto:db@berer.pl"
-            className="contact__links__link"
+            className="slogan contact__links__link"
           >
             <PhoneIcon />
             <Fragment>
@@ -168,9 +166,8 @@ const Contact = ({ ...props }) => {
             </Fragment>
           </a.a>
           <a.a
-            className="slogan"
             href="https://github.com/Dariuszb94"
-            className="contact__links__link"
+            className="slogan contact__links__link"
           >
             <GitHubIcon />
             <Fragment>
