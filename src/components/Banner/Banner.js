@@ -3,7 +3,8 @@ import "./Banner.scss";
 import { animated as a, useSpring } from "react-spring";
 import Typewriter from "typewriter-effect";
 import Logo from "./BannerComponents/Logo";
-import Particles from "react-particles-js";
+import Particles from "./BannerComponents/Particles";
+
 export default function Banner() {
   const shadowRaise = useSpring({
     from: {
@@ -43,6 +44,17 @@ export default function Banner() {
       false
     );
   }, []);
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://cdn.rawgit.com/progers/pathseg/master/pathseg.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   return (
     <section className="banner-container">
       <Logo />
@@ -65,61 +77,7 @@ export default function Banner() {
         <h2 className="banner-subtitle-mobile">Web Developer</h2>
         <h2 className="banner-subtitle-mobile">Freelancer</h2>
       </a.div>
-      <Particles
-        className="banner-bg"
-        params={{
-          particles: {
-            number: {
-              value: 8,
-              density: {
-                enable: true,
-                value_area: 800,
-              },
-            },
-            line_linked: {
-              enable: false,
-            },
-            move: {
-              speed: 1,
-              out_mode: "out",
-            },
-            shape: {
-              type: ["image", "circle"],
-              image: [
-                {
-                  src: "/react.cd2ab268.svg",
-                  height: 20,
-                  width: 23,
-                },
-                {
-                  src: "/k8s.2d579d24.svg",
-                  height: 20,
-                  width: 20,
-                },
-                {
-                  src: "https://image.flaticon.com/icons/png/512/29/29495.png",
-                  height: 20,
-                  width: 20,
-                },
-              ],
-            },
-            color: {
-              value: "#fff",
-            },
-            size: {
-              value: 30,
-              random: false,
-              anim: {
-                enable: true,
-                speed: 4,
-                size_min: 10,
-                sync: false,
-              },
-            },
-          },
-          retina_detect: false,
-        }}
-      />
+      <Particles />
     </section>
   );
 }
