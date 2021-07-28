@@ -10,8 +10,10 @@ export default () => (
       width: "100%",
       height: "100%",
     }}
+    className="particles"
   >
     <Particles
+      className="particles__inner"
       params={{
         particles: {
           number: {
