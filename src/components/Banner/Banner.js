@@ -4,7 +4,6 @@ import { animated as a, useSpring } from "react-spring";
 import Typewriter from "typewriter-effect";
 import Logo from "./BannerComponents/Logo";
 import Particles from "./BannerComponents/Particles";
-
 export default function Banner() {
   const shadowRaise = useSpring({
     from: {
